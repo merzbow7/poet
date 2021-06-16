@@ -1,0 +1,50 @@
+{% set menu = [{"url": "index", "name": "Главная"},
+        {"url": "works", "name": "Произведения"},
+        {"url": "foto", "name": "Фотографии"},
+        {"url": "books", "name": "Книги"},
+        {"url": "action", "name": "События"},
+        {"url": "about", "name": "Биография"},
+        ] %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fs-5">
+    <div class="container-fluid py-6">
+        <a class="text-decoration-none text-dark fs-3" href="{{ url_for('index') }}">Петелина Мария</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse nav-divider justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {%- for item in menu -%}
+                    <li class="nav-item">
+                        {% if request.endpoint == item.url %}
+                            {% set active="active" %}
+                            {% set curient='aria-current="page"'|safe %}
+                        {% endif %}
+                        <a class="nav-link {{ active }}" {{ curient }} href="{{ url_for(item.url) }}" title="{{ item.name }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {%- endfor -%}
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" title="Инстаграм"
+                       href="https://www.instagram.com/maria.petelina">
+                        <img class="h-1em" src="{{ url_for('static', filename='insta.svg') }}">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" title="Вконтакте" target="_blank"
+                       href="https://vk.com/mariyapetelina">
+                        <img class="h-1em" src="{{ url_for('static', filename='vk.svg') }}">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" title="Стихи.ру"
+                       href="https://stihi.ru/avtor/mari_mishon">
+                        <img class="h-1em" src="{{ url_for('static', filename='stihi_grey.svg') }}">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

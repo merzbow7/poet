@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>
+        {% block title %}
+            {% if title %}
+                {{ title + "  Петелина Мария" }}
+            {% else %}
+                {{ "Петелина Мария" }}
+            {% endif %}
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+    <!-- Bootstrap core CSS  стили бутстрап-->
+
+
+    <!-- Additional CSS  -->
+    {% block css %}
+    {% endblock %}
+
+
+    <style>
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .h-1em {
+            height: 1em;
+        }
+    </style>
+
+</head>
+<body>
+{#{% include "header.html" %}#}
+<main>
+    <div class="container-fluid">
+        {% block nav %}
+            {% include "navigation.html" %}
+        {% endblock %}
+        <div class="col-md py-3" role="application">
+            <div class="container">
+                {% block content_title %}
+                    <h2 class="text-center">{{ title }}</h2>
+                {% endblock %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</main><!-- /.container -->
+<footer class="p-3 mt-2" style="border-top: 1px solid gray">
+    <a class="pl-5" href="mailto:sevenamber@gmail.com">sevenamber@gmail.com</a>
+</footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</html>

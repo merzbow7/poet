@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container row">
+        <div class="col-md d-flex flex-column justify-content-center">
+            <a class="text-center" href="https://vk.com/mariyapetelina">
+                <img src="{{ url_for('static', filename='vk.jpg') }}">
+            </a>
+        </div>
+        <div class="col-md d-flex flex-column justify-content-center">
+            <a class="text-center" href="https://stihi.ru/avtor/mari_mishon">
+                <img src="{{ url_for('static', filename='stihi.png') }}">
+            </a>
+        </div>
+    </div>
+{% endblock %}

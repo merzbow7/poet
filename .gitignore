@@ -1,0 +1,9 @@
+venv
+*.pyc
+staticfiles
+test.py
+.env
+getting-started/*
+venv_var
+settings.py
+utils

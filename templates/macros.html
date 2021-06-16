@@ -1,0 +1,5 @@
+{% macro data_split(data)%}
+    {% for line in data.split('\n') %}
+        {{ line }}<br>
+    {% endfor %}
+{% endmacro %}

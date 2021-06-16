@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    {% set page_title = 50 - super()|length - 2 %}
+    {% if poem.title | length > page_title %}
+        {{ poem.title[:page_title] +".."+ super() }}
+    {% else %}
+        {{ poem.title + super() }}
+    {% endif %}
+{% endblock %}
+{% block content_title %}
+    {% if current_user.has_role('admin') %}
+        <h2 class="text-center pb-3">{{ poem.title }}
+            <a class="inline" href="{{ url_for('poem.edit_view', id=poem.id) }}">
+                <img class="mx-3" style="height: 1em;" src="{{ url_for('static', filename='edit.svg') }}" alt="edit">
+            </a>
+        </h2>
+    {% else %}
+        <h2 class="text-center pb-3">{{ poem.title }}</h2>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% include 'piece_of_ poetry.html' %}
+    <div class="d-flex justify-content-end">
+        {{ poem.date.strftime("%d/%b/%Y") }}
+    </div>
+{% endblock %}

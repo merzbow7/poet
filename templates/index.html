@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="text-center mb-3">{{ poem.title }}</h2>
+            <a class="text-decoration-none text-dark" href="{{ url_for('piece_of_poetry', num=poem.id) }}">
+                {% include 'piece_of_ poetry.html' %}
+            </a>
+        </div>
+        <div class="col-md-4">
+            <figure class="figure">
+                <a href="{{ url_for('foto', active=foto.id) }}">
+                    <img class="figure-img img-fluid rounded"
+                         src="{{ url_for('get_img', ind=foto.id) }}" alt="Петелина Мария">
+                </a>
+                <figcaption class="figure-caption">Петелина Мария</figcaption>
+            </figure>
+        </div>
+    </div>
+{% endblock %}

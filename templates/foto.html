@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{#{% block content -%}#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            {% for img in foto -%}#}
+{#                <img class="col-sm-6 col-md-4 col-lg-3 item pb-4" style="object-fit: cover;"#}
+{#                     src="{{ url_for('get_img', ind=img.id) }}">#}
+{#            {% endfor -%}#}
+{#        </div>#}
+{#    </div>#}
+{#{%- endblock %}#}
+{% block content %}
+    <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for img in foto -%}
+                {% if loop.index == active %}
+                    {% set act = 'active' %}
+                {% endif %}
+                <div class="carousel-item {{ act }}">
+                    <img src="{{ url_for('get_img', ind=img.id) }}" class="d-block w-100" alt="">
+                </div>
+            {% endfor -%}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+{% endblock %}

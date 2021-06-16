@@ -1,0 +1,14 @@
+{% from "macros.html" import data_split %}
+{% if poem.epigraph and request.endpoint == 'piece_of_poetry' %}
+    <div class="row my-2">
+        <div class="offset-6 col-md">{{ data_split(poem.epigraph) }}</div>
+    </div>
+{% endif %}
+<div class="d-flex justify-content-center">
+    <div class="fs-6 my-2">{{ data_split(poem.poem) }}</div>
+</div>
+{% if poem.postscriptum and request.endpoint == 'piece_of_poetry' %}
+    <div class="row my-2">
+        <div class="offset-2 col-md">{{ data_split(poem.postscriptum) }}</div>
+    </div>
+{% endif %}

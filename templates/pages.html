@@ -1,0 +1,32 @@
+{% if not page.has_next %}
+    {% set next = 'disabled' %}
+{% endif %}
+{% if not page.has_prev %}
+    {% set prev = 'disabled' %}
+{% endif %}
+<div aria-label="Page navigation poems">
+    <ul class="pagination">
+        <li class="page-item {{ prev }}">
+            <a class="page-link" href="{{ url_for(request.endpoint, page=page.prev_num) }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% if not prev %}
+            <li class="page-item"><a class="page-link"
+                                     href="{{ url_for(request.endpoint, page=page.prev_num) }}">{{ page.prev_num }}</a>
+            </li>
+        {% endif %}
+        <li class="page-item active"><a class="page-link"
+                                        href="{{ url_for(request.endpoint, page=page.page) }}">{{ page.page }}</a></li>
+        {% if not next %}
+            <li class="page-item"><a class="page-link"
+                                     href="{{ url_for(request.endpoint, page=page.next_num) }}">{{ page.next_num }}</a>
+            </li>
+        {% endif %}
+        <li class="page-item {{ next }}">
+            <a class="page-link" href="{{ url_for(request.endpoint, page=page.next_num) }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>

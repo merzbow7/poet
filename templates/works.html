@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% macro make_column(page, collapse) %}
+    <ul class="{{ collapse }} list-group list-unstyled col-md-6" id="colps">
+        {% for item in page.items %}
+            {% set id = "poems/" + item["id"] | string %}
+            <li class="list-group-item py-0">
+                <a class="fw-bold text-dark text-decoration-none" href={{ id }}>{{ item["title"] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+{% block content %}
+    <div class="row">
+        {{ make_column(page, '') }}
+    </div>
+    {% include 'pages.html' %}
+{% endblock %}

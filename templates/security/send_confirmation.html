@@ -1,0 +1,15 @@
+{% extends 'security/security_base.html' %}
+{% block title %}
+    {{ 'Сброс пароля' + super() }}
+{% endblock %}
+{% block content_s %}
+    <h1 class="text-center">{{ _('Resend confirmation instructions') }}</h1>
+    <form class="form-signin" action="{{ url_for_security('send_confirmation') }}" method="POST"
+          name="send_confirmation_form">
+        {{ send_confirmation_form.hidden_tag() }}
+        {{ render_field_with_errors(send_confirmation_form.email, class="form-control") }}
+        {{ render_field(send_confirmation_form.submit, class="btn btn-primary") }}
+        <div class="text-center">{% include "security/menu.html" %}</div>
+        {% include "security/messages.html" %}
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'security/security_base.html' %}
+{% block title %}
+    {{ 'Вход' + super() }}
+{% endblock %}
+{% block content_s %}
+    <h1 class="text-center">{{ _('Login') }}</h1>
+    <form class="form-signin align-items-center" action="{{ url_for_security('login') }}" method="POST"
+          name="login_user_form">
+        {{ login_user_form.hidden_tag() }}
+        {{ render_field_with_errors(login_user_form.email, class="form-control") }}
+        {{ render_field_with_errors(login_user_form.password, class="form-control") }}
+        <div class="checkbox mb-3">
+            {{ render_field_with_errors(login_user_form.remember) }}
+        </div>
+        {{ render_field(login_user_form.next) }}
+        {{ render_field(login_user_form.submit, class="btn btn-lg btn-primary") }}
+        {% include "security/messages.html" %}
+        <div class="text-center">{% include "security/menu.html" %}</div>
+    </form>
+{% endblock %}
